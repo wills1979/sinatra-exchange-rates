@@ -1,0 +1,13 @@
+<h1>Currency pairs</h1>
+
+<a href="/process_roll?dice=<%=@num_dice%>&sides=<%=@num_sides%>">Roll again </a>
+  | 
+<a href="/"> Go back home</a>
+
+<ol>
+  <% @currencies.each do |currency| %>
+    <li>
+      <a href="/<%= currency %>">Convert 1 <%= currency %> to ...</a>
+    </li>
+  <% end %>
+</ol>
