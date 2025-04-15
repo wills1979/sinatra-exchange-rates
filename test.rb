@@ -2,7 +2,8 @@ require "dotenv/load"
 require "json"
 require "http"
 
-currency_api_pairs_url = "https://api.exchangerate.host/list?access_key=#{ENV.fetch("EXCHANGE_RATES_KEY")}"
+@from_currency = "USD"
+@to_currency = "EUR"
 
-parsed_currency_pairs_body = JSON.parse(HTTP.get(currency_api_pairs_url))
-currency_pairs = parsed_currency_pairs_body.fetch("currencies").keys
+exchange_rate_api_url = "https://api.exchangerate.host/convert?from=#{@from_currency}&to=#{@to_currency}&amount=1&access_key=#{ENV.fetch("EXCHANGE_RATES_KEY")}"
+ JSON.parse(HTTP.get(exchange_rate_api_url)).fetch("result")
